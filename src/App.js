@@ -16,6 +16,8 @@ class App extends Component {
           <Route exact path="/submit" component={Submit}></Route>
         </Switch>
       </Router>
+
+      
     );
   }
 }
