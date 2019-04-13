@@ -1,23 +1,11 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import 'bootstrap/dist/css/bootstrap.css';
+import { makeMainRoutes } from './routes';
 
-let state = {}
-window.setState = (changes) => {
-    state = Object.assign({}, state, changes);
+const routes = makeMainRoutes();
 
-    ReactDOM.render(<App />, document.getElementById('root'));
-};
-
-let initialState = {
-    user: "test"
-}
-
-window.setState(initialState);
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(
+  routes,
+  document.getElementById('root')
+);
