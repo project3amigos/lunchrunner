@@ -21,7 +21,7 @@ class Home extends Component {
         {
           !isAuthenticated() && (
               <h4>
-                You are not logged in! Please{' '}
+                Welcome to Lunch Runner!  Please{' '}
                 <a
                   style={{ cursor: 'pointer' }}
                   onClick={this.login.bind(this)}
