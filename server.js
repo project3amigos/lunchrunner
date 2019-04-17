@@ -18,6 +18,9 @@ if (process.env.NODE_ENV === "production") {
 const routes = require("./routes");
 app.use("/", routes);
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync({ force: false }).then(function() {
