@@ -12,5 +12,24 @@ module.exports = {
     }).then(function(dbOrder) {
       res.json(dbOrder);
     })
+  },
+  findOne: function(req, res) {
+    db.Order.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.Details]
+    }).then(function(dbOrder) {
+      res.json(dbOrder);
+    })
+  },
+  delete: function(req, res) {
+    db.Order.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbOrder){
+      res.json(dbOrder);
+    })
   }
 };
