@@ -12,3 +12,5 @@ router
 .delete(detailsController.delete);
 
 module.exports = router;
+
+//bundled in api/index
