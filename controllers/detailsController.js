@@ -8,10 +8,10 @@ module.exports = {
   },
   findAll: function(req, res) {
     db.Details.findAll({
-      include:[db.Order]
-    }).then(function(dbOrder) {
-      res.json(dbOrder);
+      include: [db.Order]
     })
+      .then(order => res.status(200).send(order))
+      .catch(err => res.status(400).send(err));
   },
   findOne: function(req, res) {
     db.Details.findOne({
@@ -19,17 +19,19 @@ module.exports = {
         id: req.params.id
       },
       include: [db.Order]
-    }).then(function(dbOrder) {
-      res.json(dbOrder);
     })
+      .then(order => res.status(200).send(order))
+      .catch(err => res.status(400).send(err));
   },
   delete: function(req, res) {
     db.Details.destroy({
       where: {
         id: req.params.id
       }
-    }).then(function(dbOrder){
-      res.json(dbOrder);
     })
+      .then(order => res.status(200).send(order))
+      .catch(err => res.status(400).send(err));
   }
 };
+
+//accquired in api/details

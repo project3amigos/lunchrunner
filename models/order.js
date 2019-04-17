@@ -19,3 +19,4 @@ module.exports = function(sequelize, DataTypes) {
     return Order;
   };
   
+  //accquired in ordersController

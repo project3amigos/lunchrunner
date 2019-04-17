@@ -27,3 +27,4 @@ module.exports = function(sequelize, DataTypes) {
     return Details;
   };
   
+  //accquired in detailsController

@@ -7,3 +7,5 @@ router.use("/orders", orderRoutes);
 router.use("/details", detailsRoutes)
 
 module.exports = router;
+
+//accquired in server.js
