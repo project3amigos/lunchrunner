@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Button } from 'react-bootstrap';
+import { Navbar, Button, Jumbotron } from 'react-bootstrap';
 import './App.css';
 
 class App extends Component {
@@ -42,63 +42,75 @@ class App extends Component {
             </Button>
             {
               !isAuthenticated() && (
-                  <Button
-                    id="qsLoginBtn"
-                    bsStyle="primary"
-                    className="btn-margin"
-                    onClick={this.login.bind(this)}
-                  >
-                    Log In
+                <Button
+                  id="qsLoginBtn"
+                  bsStyle="primary"
+                  className="btn-margin"
+                  onClick={this.login.bind(this)}
+                >
+                  Log In
                   </Button>
-                )
+              )
             }
             {
               isAuthenticated() && (
-                  <Button
-                    bsStyle="primary"
-                    className="btn-margin"
-                    onClick={this.goTo.bind(this, 'profile')}
-                  >
-                    Profile
+                <Button
+                  bsStyle="primary"
+                  className="btn-margin"
+                  onClick={this.goTo.bind(this, 'profile')}
+                >
+                  Profile
                   </Button>
-                )
+              )
             }
             {
               isAuthenticated() && (
-                  <Button
-                    bsStyle="primary"
-                    className="btn-margin btn-warning"
-                    onClick={this.goTo.bind(this, 'profile')}
-                  >
-                    Create Order
+                <Button
+                  id="qsLogoutBtn"
+                  bsStyle="primary"
+                  className="btn-margin"
+                  onClick={this.logout.bind(this)}
+                >
+                  Log Out
                   </Button>
-                )
-            }
-            {
-              isAuthenticated() && (
-                  <Button
-                    bsStyle="primary"
-                    className="btn-margin btn-success"
-                    onClick={this.goTo.bind(this, 'profile')}
-                  >
-                    Join Order
-                  </Button>
-                )
-            }
-            {
-              isAuthenticated() && (
-                  <Button
-                    id="qsLogoutBtn"
-                    bsStyle="primary"
-                    className="btn-margin"
-                    onClick={this.logout.bind(this)}
-                  >
-                    Log Out
-                  </Button>
-                )
+              )
             }
           </Navbar.Header>
         </Navbar>
+        {
+          !isAuthenticated() && (<Jumbotron className="text-center">
+            <h1>Lunch Runner</h1>
+            <p>
+              Sign up for a free account to start or join an order.
+  </p>
+            <p>
+              <Button variant="primary">Learn more</Button>
+            </p>
+          </Jumbotron>)};
+          {
+          isAuthenticated() && (<Jumbotron className="text-center" bg="success">
+            <h1>Lunch Runner</h1>
+            <p>
+              Congratulations! You are now logged in, click either the 'Create Order' button to create a new order or 'Join Order' to join an already existing order.
+  </p>
+            <p>
+              <Button
+                bsStyle="primary"
+                className="btn-margin btn-warning"
+                onClick={this.goTo.bind(this, 'profile')}
+              >
+                Create Order
+                  </Button>
+              <Button
+                bsStyle="primary"
+                className="btn-margin btn-success"
+                onClick={this.goTo.bind(this, 'profile')}
+              >
+                Join Order
+                  </Button>
+
+            </p>
+          </Jumbotron>)};
         <div className="container">
           {this.props.children}
         </div>
