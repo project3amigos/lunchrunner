@@ -97,7 +97,7 @@ class App extends Component {
               <Button
                 bsStyle="primary"
                 className="btn-margin btn-warning"
-                onClick={this.goTo.bind(this, 'profile')}
+                onClick={this.goTo.bind(this, 'create')}
               >
                 Create Order
                   </Button>
