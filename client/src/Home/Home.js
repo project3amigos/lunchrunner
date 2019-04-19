@@ -22,12 +22,13 @@ class Home extends Component {
           !isAuthenticated() && (
               <h4>
                 Welcome to Lunch Runner!  Please{' '}
-                <a
+                <Link
                   style={{ cursor: 'pointer' }}
                   onClick={this.login.bind(this)}
+                  to="login"
                 >
                   Log In
-                </a>
+                </Link>
                 {' '}to continue.
               </h4>
             )

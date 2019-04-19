@@ -31,7 +31,7 @@ class App extends Component {
         <Navbar fluid>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">Lunch Runner</a>
+              Lunch Runner
             </Navbar.Brand>
             <Button
               bsStyle="primary"
