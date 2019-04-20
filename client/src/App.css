@@ -2,7 +2,6 @@ body {
   color: #87ffb4;
   /* background-image: "./AppImages/Food.jpg"; */
   background-color: #99D6FF;
-  background-blend-mode: luminosity;
 }
 
 #navbar-brand {
