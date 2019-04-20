@@ -3,6 +3,7 @@ import { Redirect, Route, Router } from 'react-router-dom';
 import App from './App';
 import Home from './Home/Home';
 import Create from './Create/Create';
+import Join from './Join/Join';
 import Profile from './Profile/Profile';
 import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
@@ -23,6 +24,7 @@ export const makeMainRoutes = () => {
           <Route path="/" render={(props) => <App auth={auth} {...props} />} />
           <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
           <Route path="/create" render={(props) => <Create auth={auth} {...props} />} />
+          <Route path="/join" render={(props) => <Join auth={auth} {...props} />} />
           <Route path="/profile" render={(props) => (
             !auth.isAuthenticated() ? (
               <Redirect to="/home"/>

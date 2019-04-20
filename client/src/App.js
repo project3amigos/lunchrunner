@@ -4,7 +4,7 @@ import './App.css';
 
 class App extends Component {
   goTo(route) {
-    this.props.history.replace(`/${route}`)
+    this.props.history.replace(`/${route}`);
   }
 
   login() {
@@ -30,9 +30,7 @@ class App extends Component {
       <div>
         <Navbar fluid>
           <Navbar.Header>
-            <Navbar.Brand>
-              Lunch Runner
-            </Navbar.Brand>
+            <Navbar.Brand>Lunch Runner</Navbar.Brand>
             <Button
               bsStyle="primary"
               className="btn-margin"
@@ -40,59 +38,55 @@ class App extends Component {
             >
               Home
             </Button>
-            {
-              !isAuthenticated() && (
-                <Button
-                  id="qsLoginBtn"
-                  bsStyle="primary"
-                  className="btn-margin"
-                  onClick={this.login.bind(this)}
-                >
-                  Log In
-                  </Button>
-              )
-            }
-            {
-              isAuthenticated() && (
-                <Button
-                  bsStyle="primary"
-                  className="btn-margin"
-                  onClick={this.goTo.bind(this, 'profile')}
-                >
-                  Profile
-                  </Button>
-              )
-            }
-            {
-              isAuthenticated() && (
-                <Button
-                  id="qsLogoutBtn"
-                  bsStyle="primary"
-                  className="btn-margin"
-                  onClick={this.logout.bind(this)}
-                >
-                  Log Out
-                  </Button>
-              )
-            }
+            {!isAuthenticated() && (
+              <Button
+                id="qsLoginBtn"
+                bsStyle="primary"
+                className="btn-margin"
+                onClick={this.login.bind(this)}
+              >
+                Log In
+              </Button>
+            )}
+            {isAuthenticated() && (
+              <Button
+                bsStyle="primary"
+                className="btn-margin"
+                onClick={this.goTo.bind(this, 'profile')}
+              >
+                Profile
+              </Button>
+            )}
+            {isAuthenticated() && (
+              <Button
+                id="qsLogoutBtn"
+                bsStyle="primary"
+                className="btn-margin"
+                onClick={this.logout.bind(this)}
+              >
+                Log Out
+              </Button>
+            )}
           </Navbar.Header>
         </Navbar>
-        {
-          !isAuthenticated() && (<Jumbotron className="text-center">
+        {!isAuthenticated() && (
+          <Jumbotron className="text-center">
             <h1>Lunch Runner</h1>
-            <p>
-              Sign up for a free account to start or join an order.
-  </p>
+            <p>Sign up for a free account to start or join an order.</p>
             <p>
               <Button variant="primary">Learn more</Button>
             </p>
-          </Jumbotron>)};
-          {
-          isAuthenticated() && (<Jumbotron className="text-center" bg="success">
+          </Jumbotron>
+        )}
+
+        {isAuthenticated() && (
+          <Jumbotron className="text-center" bg="success">
             <h1>Lunch Runner</h1>
-            <p>
-              Congratulations! You are now logged in, click either the 'Create Order' button to create a new order or 'Join Order' to join an already existing order.
-  </p>
+            <p id="loggedIn">
+              Welcome to Lunch Runner! Please click either the 'Create Order'
+              button to create a new order or 'Join Order' to join an already
+              existing order.
+            </p>
             <p>
               <Button
                 bsStyle="primary"
@@ -100,20 +94,18 @@ class App extends Component {
                 onClick={this.goTo.bind(this, 'create')}
               >
                 Create Order
-                  </Button>
+              </Button>
               <Button
                 bsStyle="primary"
                 className="btn-margin btn-success"
-                onClick={this.goTo.bind(this, 'profile')}
+                onClick={this.goTo.bind(this, 'join')}
               >
                 Join Order
-                  </Button>
-
+              </Button>
             </p>
-          </Jumbotron>)};
-        <div className="container">
-          {this.props.children}
-        </div>
+          </Jumbotron>
+        )}
+        <div className="container">{this.props.children}</div>
       </div>
     );
   }
