@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FormGroup, ControlLabel, FormControl, HelpBlock, Button } from 'react-bootstrap';
+import API from '../utils/API';
 // import { Link } from 'react-router-dom';
 
 class Create extends Component {
@@ -12,21 +13,43 @@ class Create extends Component {
     this.handleChange = this.handleChange.bind(this);
 
     this.state = {
-      value: ''
+      orderValue: '',
+      restaurantValue: '',
+      runnerValue: '',
+      dateValue: ''
     };
   }
 
-  getValidationState() {
-    const length = this.state.value.length;
-    if (length > 10) return 'success';
-    else if (length > 5) return 'warning';
-    else if (length > 0) return 'error';
-    return null;
+  // getValidationState() {
+  //   const length = this.state.value.length;
+  //   if (length > 10) return 'success';
+  //   else if (length > 5) return 'warning';
+  //   else if (length > 0) return 'error';
+  //   return null;
+  // }
+
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  createOrderClick = event => {
+    console.log(this.state);
+    const value = this.state;
+    event.preventDefault();
+    API.createOrder({
+      name: value.orderValue,
+      userId: "me",
+      restaurant: value.restaurantValue,
+      runner: value.runnerValue,
+      pickupDate: value.dateValue  
+    }).catch(err => {
+      console.log(err);
+    })
   }
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
-  }
   render() {
     const { isAuthenticated } = this.props.auth;
     return (
@@ -41,12 +64,13 @@ class Create extends Component {
               <form>
                 <FormGroup
                   controlId="formBasicText"
-                  validationState={this.getValidationState()}
+                  /* validationState={this.getValidationState()} */
                 >
                   <ControlLabel>Enter the Name of the Order Below</ControlLabel>
-                  <FormControl
+                  <FormControl 
                     type="text"
-                    value={this.state.value}
+                    value={this.state.orderValue}
+                    name="orderValue"
                     placeholder="Order Name"
                     onChange={this.handleChange}
                   />
@@ -54,9 +78,10 @@ class Create extends Component {
                   <HelpBlock>This should be something that everyone on the order will recognize.</HelpBlock>
 
                   <ControlLabel>Restaurant Name</ControlLabel>
-                  <FormControl
+                  <FormControl 
                     type="text"
-                    value={this.state.value}
+                    value={this.state.restaurantValue}
+                    name="restaurantValue"
                     placeholder="Restaurant Name"
                     onChange={this.handleChange}
                   />
@@ -64,9 +89,10 @@ class Create extends Component {
                   <HelpBlock>Validation is based on string length.</HelpBlock>
 
                   <ControlLabel>Order Date</ControlLabel>
-                  <FormControl
+                  <FormControl 
                     type="text"
-                    value={this.state.value}
+                    value={this.state.dateValue}
+                    name="dateValue"
                     placeholder="Date the order will be picked up"
                     onChange={this.handleChange}
                   />
@@ -74,17 +100,18 @@ class Create extends Component {
                   <HelpBlock>Validation is based on string length.</HelpBlock>
 
                   <ControlLabel>Runner</ControlLabel>
-                  <FormControl
+                  <FormControl 
                     type="text"
-                    value={this.state.value}
-                    placeholder="Enter text"
+                    value={this.state.runnerValue}
+                    name="runnerValue"
+                    placeholder="Runner"
                     onChange={this.handleChange}
                   />
                   <FormControl.Feedback />
                   <HelpBlock>Person that will be picking up the order.</HelpBlock>
                 </FormGroup>
               </form>
-              <Button variant="success" size="lg" block>
+              <Button variant="success" size="lg" block onClick={this.createOrderClick}>
                 Create Order
   </Button>
             </div>

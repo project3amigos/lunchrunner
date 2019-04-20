@@ -8,33 +8,33 @@ class Home extends Component {
   render() {
     const { isAuthenticated } = this.props.auth;
     return (
-      <div className="container">
-        {
-          isAuthenticated() && (
-              <h4>
-                You are logged in! You can now view your{' '}
-                <Link to="profile">profile area</Link>
-                .
-              </h4>
-            )
-        }
-        {
-          !isAuthenticated() && (
-              <h4>
-                Welcome to Lunch Runner!  Please{' '}
-                <Link
-                  style={{ cursor: 'pointer' }}
-                  onClick={this.login.bind(this)}
-                  to="login"
-                >
-                  Log In
-                </Link>
-                {' '}to continue.
-              </h4>
-            )
-        }
-      </div>
-    );
+  <div className="container">
+    {
+      isAuthenticated() && (
+          <h4>
+            You are logged in! You can now view your{' '}
+            <Link to="profile">profile area</Link>
+            .
+          </h4>
+        )
+    }
+    {
+      !isAuthenticated() && (
+          <h4>
+            Welcome to Lunch Runner!  Please{' '}
+            <Link
+              style={{ cursor: 'pointer' }}
+              onClick={this.login.bind(this)}
+              to="login"
+            >
+              Log In
+            </Link>
+            {' '}to continue.
+          </h4>
+        )
+    }
+  </div>
+  );
   }
 }
 
