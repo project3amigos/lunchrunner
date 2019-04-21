@@ -36,7 +36,7 @@ class Create extends Component {
   };
 
   createOrderClick = event => {
-    console.log(this.state);
+    alert("Order Succesfully Created")
     const value = this.state;
     event.preventDefault();
     API.createOrder({
@@ -48,6 +48,12 @@ class Create extends Component {
     }).catch(err => {
       console.log(err);
     })
+    this.setState({
+      orderValue: '',
+      restaurantValue: '',
+      runnerValue: '',
+      dateValue: ''
+    });
   }
 
   render() {
