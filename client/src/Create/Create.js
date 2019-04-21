@@ -77,7 +77,7 @@ class Create extends Component {
                   <FormControl.Feedback />
                   <HelpBlock>This should be something that everyone on the order will recognize.</HelpBlock>
 
-                  <ControlLabel>Restaurant Name</ControlLabel>
+                  <ControlLabel> - Restaurant Name</ControlLabel>
                   <FormControl 
                     type="text"
                     value={this.state.restaurantValue}
@@ -88,7 +88,7 @@ class Create extends Component {
                   <FormControl.Feedback />
                   <HelpBlock>Validation is based on string length.</HelpBlock>
 
-                  <ControlLabel>Order Date</ControlLabel>
+                  <ControlLabel> - Order Date</ControlLabel>
                   <FormControl 
                     type="text"
                     value={this.state.dateValue}
@@ -99,7 +99,7 @@ class Create extends Component {
                   <FormControl.Feedback />
                   <HelpBlock>Validation is based on string length.</HelpBlock>
 
-                  <ControlLabel>Runner</ControlLabel>
+                  <ControlLabel> - Runner</ControlLabel>
                   <FormControl 
                     type="text"
                     value={this.state.runnerValue}
@@ -111,7 +111,7 @@ class Create extends Component {
                   <HelpBlock>Person that will be picking up the order.</HelpBlock>
                 </FormGroup>
               </form>
-              <Button variant="success" size="lg" block onClick={this.createOrderClick}>
+              <Button size="lg" block onClick={this.createOrderClick}>
                 Create Order
   </Button>
             </div>
