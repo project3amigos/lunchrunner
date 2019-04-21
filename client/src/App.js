@@ -74,13 +74,13 @@ class App extends Component {
             <h1>Lunch Runner</h1>
             <p>Sign up for a free account to start or join an order.</p>
             <p>
-              <Button variant="primary">Learn more</Button>
+              <Button>Learn more</Button>
             </p>
           </Jumbotron>
         )}
 
         {isAuthenticated() && (
-          <Jumbotron className="text-center" bg="success">
+          <Jumbotron className="text-center">
             <h1>Lunch Runner</h1>
             <p id="loggedIn">
               Welcome to Lunch Runner! Please click either the 'Create Order'
