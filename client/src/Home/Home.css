@@ -1,16 +1,14 @@
 body {
-  color: #9bf1fc;
-  background-color: #671207;
-  /* background-color: #99D6FF; */
-  background-image: "./AppImages/Food.jpg";
-  
+  color: #671207;
+  background-color: #9bf1fc;
+  background-image: "../AppImages/Food.jpg";
 }
 
 #navbar-brand {
   background-color: black;
 }
 
-Jumbotron { 
+Jumbotron {
   color: #9bf1fc;
   background-color: #671207;
 }
