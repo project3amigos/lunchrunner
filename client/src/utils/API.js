@@ -12,6 +12,6 @@ export default {
         return axios.get('/api/orders/' + id);
     },
     createDetails: function(detailsData) {
-        return axios.post('/api/detals', detailsData);
+        return axios.post('/api/details', detailsData);
     }
 };
