@@ -1,7 +1,8 @@
 body {
-  color: #671207;
-  background-color: #9bf1fc;
+  color: #000000;
+  background-color: #272626fa;
   background-image: "../AppImages/Food.jpg";
+  background-image: URL("https://www.seriouseats.com/images/2016/10/20150923-Thanksgiving-spread-vicky-wasik-001.jpg");
 }
 
 #navbar-brand {
@@ -10,12 +11,13 @@ body {
 
 Jumbotron {
   color: #9bf1fc;
-  background-color: #671207;
+  background-color: #c76e33;
+  background-image: URL("https://food.fnr.sndimg.com/content/dam/images/food/fullset/2018/6/0/FN_snapchat_coachella_wingman%20.jpeg.rend.hgtvcom.616.462.suffix/1523633513292.jpeg");
 }
-
 .text-center {
-  color: #9bf1fc;
-  background-color: #671207;
+  color: #ebebeb;
+  background-color: #ee840af3;
+  background-image: URL("");
 }
 
 .btn-margin {

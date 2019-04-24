@@ -70,7 +70,8 @@ class App extends Component {
           </Navbar.Header>
         </Navbar>
         {!isAuthenticated() && (
-          <Jumbotron className="text-center">
+          <Jumbotron style={{ backgroundImage:("./AppImages/Food.jpg") }}  className="text-center">
+            
             <h1>Lunch Runner</h1>
             <p>Sign up for a free account to start or join an order.</p>
             <p>
