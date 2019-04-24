@@ -13,5 +13,8 @@ export default {
     },
     createDetails: function(detailsData) {
         return axios.post('/api/details', detailsData);
+    },
+    getDetails: function(id) {
+        return axios.get('/api/details/'+ id)
     }
 };
