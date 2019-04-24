@@ -1,25 +1,3 @@
-body {
-  color: #9bf1fc;
-  background-color: #671207;
-  /* background-color: #99D6FF; */
-  background-image: "./AppImages/Food.jpg";
-  
-}
-
-#navbar-brand {
-  background-color: black;
-}
-
-Jumbotron { 
-  color: #9bf1fc;
-  background-color: #671207;
-}
-
-.text-center {
-  color: #9bf1fc;
-  background-color: #671207;
-}
-
 .btn-margin {
-  margin: 10px 5px;
+  margin: 7px 3px;
 }
