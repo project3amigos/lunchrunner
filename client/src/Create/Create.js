@@ -36,7 +36,7 @@ class Create extends Component {
   };
 
   createOrderClick = event => {
-    console.log(this.state);
+    alert("Order Succesfully Created")
     const value = this.state;
     event.preventDefault();
     API.createOrder({
@@ -48,6 +48,12 @@ class Create extends Component {
     }).catch(err => {
       console.log(err);
     })
+    this.setState({
+      orderValue: '',
+      restaurantValue: '',
+      runnerValue: '',
+      dateValue: ''
+    });
   }
 
   render() {
@@ -66,7 +72,7 @@ class Create extends Component {
                   controlId="formBasicText"
                   /* validationState={this.getValidationState()} */
                 >
-                  <ControlLabel>Enter the Name of the Order Below</ControlLabel>
+                  <ControlLabel> - Enter the Name of the Order Below</ControlLabel>
                   <FormControl 
                     type="text"
                     value={this.state.orderValue}
@@ -75,9 +81,9 @@ class Create extends Component {
                     onChange={this.handleChange}
                   />
                   <FormControl.Feedback />
-                  <HelpBlock>This should be something that everyone on the order will recognize.</HelpBlock>
+                  <HelpBlock><em>This should be something that everyone on the order will recognize.</em></HelpBlock>
 
-                  <ControlLabel>Restaurant Name</ControlLabel>
+                  <ControlLabel> - Restaurant Name</ControlLabel>
                   <FormControl 
                     type="text"
                     value={this.state.restaurantValue}
@@ -86,9 +92,9 @@ class Create extends Component {
                     onChange={this.handleChange}
                   />
                   <FormControl.Feedback />
-                  <HelpBlock>Validation is based on string length.</HelpBlock>
+                  <HelpBlock><em>Input the name of the desired restaurant here.</em></HelpBlock>
 
-                  <ControlLabel>Order Date</ControlLabel>
+                  <ControlLabel> - Order Date</ControlLabel>
                   <FormControl 
                     type="text"
                     value={this.state.dateValue}
@@ -97,9 +103,9 @@ class Create extends Component {
                     onChange={this.handleChange}
                   />
                   <FormControl.Feedback />
-                  <HelpBlock>Validation is based on string length.</HelpBlock>
+                  <HelpBlock><em>Enter either todays date or a future date if needed.</em></HelpBlock>
 
-                  <ControlLabel>Runner</ControlLabel>
+                  <ControlLabel> - Runner</ControlLabel>
                   <FormControl 
                     type="text"
                     value={this.state.runnerValue}
@@ -108,12 +114,12 @@ class Create extends Component {
                     onChange={this.handleChange}
                   />
                   <FormControl.Feedback />
-                  <HelpBlock>Person that will be picking up the order.</HelpBlock>
+                  <HelpBlock><em>Person that will be picking up the order.</em></HelpBlock>
                 </FormGroup>
               </form>
-              <Button variant="success" size="lg" block onClick={this.createOrderClick}>
+              <Button size="lg" block onClick={this.createOrderClick}>
                 Create Order
-  </Button>
+  </Button><hr></hr>
             </div>
           )
         }
