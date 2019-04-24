@@ -20,14 +20,6 @@ class Create extends Component {
     };
   }
 
-  // getValidationState() {
-  //   const length = this.state.value.length;
-  //   if (length > 10) return 'success';
-  //   else if (length > 5) return 'warning';
-  //   else if (length > 0) return 'error';
-  //   return null;
-  // }
-
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({

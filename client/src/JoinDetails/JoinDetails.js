@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
 import API from '../utils/API';
+import { FormGroup, ControlLabel, FormControl, HelpBlock, Button } from 'react-bootstrap';
 // import { Link } from 'react-router-dom';
 
 class JoinDetails extends Component {
@@ -13,16 +13,12 @@ class JoinDetails extends Component {
     this.handleChange = this.handleChange.bind(this);
 
     this.state = {
-      selectedOrderId: this.props.location.state.selectedOrderId
+      selectedOrderId: this.props.location.state.selectedOrderId,
+      userValue: '',
+      userOrderValue: '',
+      OrderId: '',
+      headOrder: {}
     };
-  }
-
-  getOrder() {
-    console.log(this.state.selectedOrderId)
-  }
-
-  componentDidMount() {
-    this.getOrder();
   }
 
   handleChange = event => {
@@ -32,15 +28,75 @@ class JoinDetails extends Component {
     });
   };
 
+  getOrder() {
+    const id = this.state.selectedOrderId;
+    API.getOrder(id).then( res => {
+      this.setState({
+        headOrder: res.data
+      });
+      console.log(res.data);
+      console.log(this.state.headOrder);
+    });
+    
+  }
+
+  componentDidMount() {
+    this.getOrder();
+  }
+
+  createEntryClick = event => {
+    alert("Order Succesfully Submitted")
+    const value = this.state;
+    event.preventDefault();
+    API.createDetails({
+      user: value.userValue,
+      userOrder: value.userOrderValue,
+      OrderId: this.state.headOrder.id
+    }).catch(err => {
+      console.log(err);
+    })
+    this.setState({
+      userValue: '',
+      userOrderValue: ''
+    });
+  }
+
   render() {
     const { isAuthenticated } = this.props.auth;
     return (
       <div className="container">
         {isAuthenticated() && (
           <div>
-            <h4>{this.state.selectedOrderId}</h4>
-            <Button size="lg" block onClick={this.createOrderClick}>
-              Submit Order
+            <h1 className="text-center">{this.state.headOrder.name}</h1>
+            <h2 className="text-center">{this.state.headOrder.restaurant}</h2>
+            <FormGroup
+                  controlId="formBasicText"
+                  /* validationState={this.getValidationState()} */
+                >
+                  <ControlLabel>Name</ControlLabel>
+                  <FormControl 
+                    type="text"
+                    value={this.state.userValue}
+                    name="userValue"
+                    placeholder="Enter your name here"
+                    onChange={this.handleChange}
+                  />
+                  <FormControl.Feedback />
+                  <HelpBlock>This is how you will be identified on the order.</HelpBlock>
+
+                  <ControlLabel>What do you want?</ControlLabel>
+                  <FormControl 
+                    type="text"
+                    value={this.state.userOrderValue}
+                    name="userOrderValue"
+                    placeholder="Put what you want to eat here"
+                    onChange={this.handleChange}
+                  />
+                  <FormControl.Feedback />
+                  <HelpBlock>Make sure to be specific, ain't nobody got time for that.</HelpBlock>
+                </FormGroup>
+            <Button size="lg" block onClick={this.createEntryClick}>
+              Add to Order
             </Button>
           </div>
         )}
