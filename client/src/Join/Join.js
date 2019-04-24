@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import {
-  FormGroup,
-  ControlLabel,
-  FormControl,
-  HelpBlock,
-  Form
-} from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import API from '../utils/API';
+import { Redirect } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
-class Create extends Component {
+class Join extends Component {
   login() {
     this.props.auth.login();
   }
@@ -19,8 +14,17 @@ class Create extends Component {
     this.handleChange = this.handleChange.bind(this);
 
     this.state = {
-      orderNames: []
+      orderNames: [],
+      selectedOrderId: 0,
+      completed: false
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.passOrder = this.passOrder.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ selectedOrderId: event.target.value });
   }
 
   getAllOrders() {
@@ -29,8 +33,13 @@ class Create extends Component {
         orderNames: res.data
       })
     );
-    console.log(this.state);
   }
+
+  passOrder = event => {
+    this.setState({ completed: true });
+    event.preventDefault();
+    console.log(this.state.selectedOrderId);
+  };
 
   componentDidMount() {
     this.getAllOrders();
@@ -44,24 +53,37 @@ class Create extends Component {
   //   return null;
   // };
 
-  handleChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
   render() {
+    if (this.state.completed) {
+      return (
+        <Redirect
+          to={{
+            pathname: '/joindetails',
+            state: { selectedOrderId: this.state.selectedOrderId }
+          }}
+        />
+      );
+    }
     const { isAuthenticated } = this.props.auth;
     return (
       <div className="container">
         {isAuthenticated() && (
           <div>
-            <select>
-              {this.state.orderNames.map(order => (
-                <option key={order.id}>{order.name}</option>
-              ))}
-            </select>
+            <form>
+              <select
+                onChange={this.handleChange}
+                value={this.state.selectedOrderId}>
+                <option>Please choose an order to join</option>
+                {this.state.orderNames.map(order => (
+                  <option key={order.id} value={order.id}>
+                    {order.name}
+                  </option>
+                ))}
+              </select>
+              <Button size="lg" block onClick={this.passOrder}>
+                Join Order
+              </Button>
+            </form>
           </div>
         )}
       </div>
@@ -69,4 +91,4 @@ class Create extends Component {
   }
 }
 
-export default Create;
+export default Join;
