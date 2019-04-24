@@ -30,9 +30,9 @@ class App extends Component {
       <div>
         <Navbar fluid>
           <Navbar.Header>
-            <Navbar.Brand>Lunch Runner</Navbar.Brand>
+            <Navbar.Brand class="navbarcss">Lunch Runner</Navbar.Brand>
             <Button
-              bsStyle="primary"
+              bsStyle="info"
               className="btn-margin"
               onClick={this.goTo.bind(this, 'home')}
             >
@@ -41,7 +41,7 @@ class App extends Component {
             {!isAuthenticated() && (
               <Button
                 id="qsLoginBtn"
-                bsStyle="primary"
+                bsStyle="success"
                 className="btn-margin"
                 onClick={this.login.bind(this)}
               >
@@ -60,7 +60,7 @@ class App extends Component {
             {isAuthenticated() && (
               <Button
                 id="qsLogoutBtn"
-                bsStyle="primary"
+                bsStyle="secondary"
                 className="btn-margin"
                 onClick={this.logout.bind(this)}
               >
@@ -74,7 +74,7 @@ class App extends Component {
             <h1>Lunch Runner</h1>
             <p>Sign up for a free account to start or join an order.</p>
             <p>
-              <Button>Learn more</Button>
+              <Button variant="secondary">Learn more</Button>
             </p>
           </Jumbotron>
         )}
