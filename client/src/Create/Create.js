@@ -72,7 +72,7 @@ class Create extends Component {
                   controlId="formBasicText"
                   /* validationState={this.getValidationState()} */
                 >
-                  <ControlLabel>Enter the Name of the Order Below</ControlLabel>
+                  <ControlLabel> - Enter the Name of the Order Below</ControlLabel>
                   <FormControl 
                     type="text"
                     value={this.state.orderValue}
@@ -81,7 +81,7 @@ class Create extends Component {
                     onChange={this.handleChange}
                   />
                   <FormControl.Feedback />
-                  <HelpBlock>This should be something that everyone on the order will recognize.</HelpBlock>
+                  <HelpBlock><em>This should be something that everyone on the order will recognize.</em></HelpBlock>
 
                   <ControlLabel> - Restaurant Name</ControlLabel>
                   <FormControl 
@@ -92,7 +92,7 @@ class Create extends Component {
                     onChange={this.handleChange}
                   />
                   <FormControl.Feedback />
-                  <HelpBlock>Validation is based on string length.</HelpBlock>
+                  <HelpBlock><em>Input the name of the desired restaurant here.</em></HelpBlock>
 
                   <ControlLabel> - Order Date</ControlLabel>
                   <FormControl 
@@ -103,7 +103,7 @@ class Create extends Component {
                     onChange={this.handleChange}
                   />
                   <FormControl.Feedback />
-                  <HelpBlock>Validation is based on string length.</HelpBlock>
+                  <HelpBlock><em>Enter either todays date or a future date if needed.</em></HelpBlock>
 
                   <ControlLabel> - Runner</ControlLabel>
                   <FormControl 
@@ -114,12 +114,12 @@ class Create extends Component {
                     onChange={this.handleChange}
                   />
                   <FormControl.Feedback />
-                  <HelpBlock>Person that will be picking up the order.</HelpBlock>
+                  <HelpBlock><em>Person that will be picking up the order.</em></HelpBlock>
                 </FormGroup>
               </form>
               <Button size="lg" block onClick={this.createOrderClick}>
                 Create Order
-  </Button>
+  </Button><hr></hr>
             </div>
           )
         }
