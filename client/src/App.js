@@ -70,13 +70,14 @@ class App extends Component {
           </Navbar.Header>
         </Navbar>
         {!isAuthenticated() && (
-          <Jumbotron style={{ backgroundImage:("./AppImages/Food.jpg") }}  className="text-center">
+          <Jumbotron className="text-center">
             
             <h1>Lunch Runner</h1>
             <p>Sign up for a free account to start or join an order.</p>
             <p>
               <Button variant="secondary">Learn more</Button>
-            </p>
+            </p>{this.props.children}
+            <div>{this.props.children}</div>
           </Jumbotron>
         )}
 
@@ -103,7 +104,7 @@ class App extends Component {
               >
                 Join Order
               </Button>
-            </p>
+            </p>{this.props.children}
           </Jumbotron>
         )}
         <div className="container">{this.props.children}</div>
