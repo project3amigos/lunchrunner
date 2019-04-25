@@ -3,6 +3,10 @@
 }
 
 
-#Jumbotron {
+.jumbotron {
   color: #9bf1fc;
+  background-color: transparent;
+  
 }
+
+

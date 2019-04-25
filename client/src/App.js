@@ -70,7 +70,7 @@ class App extends Component {
           </Navbar.Header>
         </Navbar>
         {!isAuthenticated() && (
-          <Jumbotron className="text-center">
+          <Jumbotron>
             
             <h1>Lunch Runner</h1>
             <p>Sign up for a free account to start or join an order.</p>
@@ -82,7 +82,7 @@ class App extends Component {
         )}
 
         {isAuthenticated() && (
-          <Jumbotron className="text-center">
+          <Jumbotron>
             <h1>Lunch Runner</h1>
             <p id="loggedIn">
               Welcome to Lunch Runner! Please click either the 'Create Order'
