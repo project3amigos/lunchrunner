@@ -14,6 +14,13 @@ module.exports = {
       .then(order => res.status(200).send(order))
       .catch(err => res.status(400).send(err));
   },
+  findOpen: function(req, res) {
+    db.Order.findAll({
+      where: {
+        submitted: false
+      }
+    })
+  },
   findOne: function(req, res) {
     db.Order.findOne({
       where: {

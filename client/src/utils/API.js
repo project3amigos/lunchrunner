@@ -8,6 +8,9 @@ export default {
     getAllOrders: function() {
         return axios.get('/api/orders');
     },
+    getOpenOrders: function() {
+        return axios.get('/api/orders/open');
+    },
     getOrder: function(id) {
         return axios.get('/api/orders/' + id);
     },

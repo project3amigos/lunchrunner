@@ -11,14 +11,15 @@ class Create extends Component {
   constructor(props, context) {
     super(props, context);
 
-    this.handleChange = this.handleChange.bind(this);
-
     this.state = {
       orderValue: '',
       restaurantValue: '',
       runnerValue: '',
+      phoneValue: '',
       dateValue: ''
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = event => {
@@ -37,6 +38,7 @@ class Create extends Component {
       userId: "me",
       restaurant: value.restaurantValue,
       runner: value.runnerValue,
+      runnerPhone: value.phoneValue,
       pickupDate: value.dateValue  
     }).catch(err => {
       console.log(err);
@@ -45,6 +47,7 @@ class Create extends Component {
       orderValue: '',
       restaurantValue: '',
       runnerValue: '',
+      phoneValue: '',
       dateValue: ''
     });
   }
@@ -108,6 +111,17 @@ class Create extends Component {
                   />
                   <FormControl.Feedback />
                   <HelpBlock><em>Person that will be picking up the order.</em></HelpBlock>
+
+                  <ControlLabel>Runner phone number</ControlLabel>
+                  <FormControl 
+                    type="text"
+                    value={this.state.phoneValue}
+                    name="phoneValue"
+                    placeholder="Runner phone number"
+                    onChange={this.handleChange}
+                  />
+                  <FormControl.Feedback />
+                  <HelpBlock><em>So we can send a text with completed order.</em></HelpBlock>
                 </FormGroup>
               </form>
               <Button size="lg" block onClick={this.createOrderClick}>
