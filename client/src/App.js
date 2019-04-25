@@ -60,7 +60,7 @@ class App extends Component {
             {isAuthenticated() && (
               <Button
                 id="qsLogoutBtn"
-                bsStyle="secondary"
+                bsStyle="info"
                 className="btn-margin"
                 onClick={this.logout.bind(this)}
               >

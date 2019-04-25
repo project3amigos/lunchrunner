@@ -9,7 +9,7 @@ module.exports = {
   findAll: function(req, res) {
     db.Details.findAll({
       where: {
-        id: req.params.id
+        orderId: req.params.id
       },
       include: [db.Order]
     })
