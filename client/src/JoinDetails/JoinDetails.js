@@ -49,6 +49,7 @@ class JoinDetails extends Component {
 
   getOrderDetails = () => {
     const id = this.state.selectedOrderId;
+    console.log(id);
     API.getDetails(id).then(res => {
       this.setState({
         orderDetails: res.data
