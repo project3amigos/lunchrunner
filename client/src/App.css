@@ -1,6 +1,10 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(0deg, rgba(104, 62, 39, 1) 34%, rgba(154, 196, 219, 1) 75%);
+  background: radial-gradient(circle, rgba(59, 138, 207, 1) 0%, rgba(104, 41, 0, 1) 100%);
+}
+
+#navbarcss {
+  background-color: black;
 }
 
 .btn-margin {
@@ -8,12 +12,13 @@ body {
 }
 
 h4 {
-  color: #4d6287;
+  color: #3b8acf;
+  text-shadow: 1px 1px 1px #682900;
 }
 
 .text-center {
-  color: #4d6287;
-  text-shadow: 2px 2px 4px #210f00;
+  color: #682900;
+  text-shadow: 2px 2px 4px #3b8acf;
   background-image: URL('https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fimg.sunset02.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F4_3_horizontal_inbody_900x506%2Fpublic%2Fimage%2F2016%2F09%2Fmain%2Ffej0114t-hr8235c-55500.jpg&w=1600&q=70');
   background-repeat: no-repeat;
   background-size: 100%;
