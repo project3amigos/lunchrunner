@@ -15,9 +15,13 @@ body {
 
 .jumbotron {
 
-  color: #9bf1fc;
+  color: #ffffff;
   background-color: transparent;
-  
+  background-image: URL('https://www.seriouseats.com/images/2016/10/20150923-Thanksgiving-spread-vicky-wasik-001.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  text-shadow: 2px 2px 4px #000000;
+  text-align: center;
 }
 
 
@@ -28,8 +32,7 @@ h4 {
 
 .text-center {
   color: #682900;
-  text-shadow: 2px 2px 4px #3b8acf;
-  background-image: URL('https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fimg.sunset02.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F4_3_horizontal_inbody_900x506%2Fpublic%2Fimage%2F2016%2F09%2Fmain%2Ffej0114t-hr8235c-55500.jpg&w=1600&q=70');
+  text-shadow: 2px 2px 4px #000000;
   background-repeat: no-repeat;
   background-size: 100%;
 }
