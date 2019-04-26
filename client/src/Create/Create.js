@@ -7,7 +7,6 @@ import {
   Button
 } from 'react-bootstrap';
 import API from '../utils/API';
-import './Create.css';
 import uniqid from 'uniqid';
 import { Redirect } from 'react-router-dom';
 
