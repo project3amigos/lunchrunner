@@ -5,6 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     userId: DataTypes.STRING,
     restaurant: DataTypes.STRING,
     runner: DataTypes.STRING,
+    runnerPhone: DataTypes.STRING,
     pickupDate: { type: DataTypes.DATEONLY/*, defaultValue: sequelize.NOW*/},
     submitted: { type: DataTypes.BOOLEAN, defaultValue: false }
   });
