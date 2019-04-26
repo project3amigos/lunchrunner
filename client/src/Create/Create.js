@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FormGroup, ControlLabel, FormControl, HelpBlock, Button } from 'react-bootstrap';
 import API from '../utils/API';
+import './Create.css'
 
 // import { Link } from 'react-router-dom';
 

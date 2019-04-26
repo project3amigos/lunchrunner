@@ -76,6 +76,7 @@ class App extends Component {
             <p>
               <Button bsStyle="info" variant="secondary">Learn More</Button>
             </p>
+
           </Jumbotron>
         )}
 
@@ -102,7 +103,7 @@ class App extends Component {
               >
                 Join Order
               </Button>
-            </p>
+            </p>{this.props.children}
           </Jumbotron>
         )}
         <div className="container">{this.props.children}</div>
