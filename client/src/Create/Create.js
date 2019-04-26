@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FormGroup, ControlLabel, FormControl, HelpBlock, Button } from 'react-bootstrap';
 import API from '../utils/API';
+import './Create.css'
 
 // import { Link } from 'react-router-dom';
 
@@ -62,14 +63,14 @@ class Create extends Component {
               <h4>
                 Start filling out your form below to begin
               </h4>
-
+              <hr></hr>
               <form>
                 <FormGroup
                   controlId="formBasicText"
-                  /* validationState={this.getValidationState()} */
+                /* validationState={this.getValidationState()} */
                 >
                   <ControlLabel> - Enter the Name of the Order Below</ControlLabel>
-                  <FormControl 
+                  <FormControl
                     type="text"
                     value={this.state.orderValue}
                     name="orderValue"
@@ -80,7 +81,7 @@ class Create extends Component {
                   <HelpBlock><em>This should be something that everyone on the order will recognize.</em></HelpBlock>
 
                   <ControlLabel> - Restaurant Name</ControlLabel>
-                  <FormControl 
+                  <FormControl
                     type="text"
                     value={this.state.restaurantValue}
                     name="restaurantValue"
@@ -91,7 +92,7 @@ class Create extends Component {
                   <HelpBlock><em>Input the name of the desired restaurant here.</em></HelpBlock>
 
                   <ControlLabel> - Order Date</ControlLabel>
-                  <FormControl 
+                  <FormControl
                     type="text"
                     value={this.state.dateValue}
                     name="dateValue"
@@ -102,7 +103,7 @@ class Create extends Component {
                   <HelpBlock><em>Enter either todays date or a future date if needed.</em></HelpBlock>
 
                   <ControlLabel> - Runner</ControlLabel>
-                  <FormControl 
+                  <FormControl
                     type="text"
                     value={this.state.runnerValue}
                     name="runnerValue"
@@ -124,9 +125,10 @@ class Create extends Component {
                   <HelpBlock><em>So we can send a text with completed order.</em></HelpBlock>
                 </FormGroup>
               </form>
-              <Button size="lg" block onClick={this.createOrderClick}>
+              <Button size="lg" bsStyle="primary" block onClick={this.createOrderClick}>
                 Create Order
-  </Button><hr></hr>
+              </Button>
+              <hr></hr>
             </div>
           )
         }

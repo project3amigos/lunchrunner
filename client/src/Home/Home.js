@@ -14,7 +14,7 @@ class Home extends Component {
           isAuthenticated() && (
             <h4>
               You are logged in! You can now view your{' '}
-              <Link to="profile">profile area</Link>
+              <Link to="profile"><strong>profile area</strong></Link>
               .
           </h4>
           )
@@ -28,7 +28,7 @@ class Home extends Component {
                 onClick={this.login.bind(this)}
                 to="login"
               >
-                Log In
+                <strong>Log In</strong>
             </Link>
               {' '}to continue.
           </h4>

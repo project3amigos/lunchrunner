@@ -80,9 +80,11 @@ class Join extends Component {
                   </option>
                 ))}
               </select>
-              <Button size="lg" block onClick={this.passOrder}>
+              <hr></hr>
+              <Button size="lg" bsStyle="success" block onClick={this.passOrder}>
                 Join Order
               </Button>
+              <hr></hr>
             </form>
           </div>
         )}

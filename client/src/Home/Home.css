@@ -1,3 +1,24 @@
+body {
+  color: #000000;
+  background-color: #272626fa;
+  background: rgb(104,62,39);
+  background: linear-gradient(0deg, rgba(104,62,39,1) 34%, rgba(154,196,219,1) 75%);
+}
+
+#navbar-brand {
+  background-color: black;
+}
+
+#Jumbotron {
+  color: #9bf1fc;
+  background-size: cover;
+}
+.text-center {
+  color: #ebebeb;
+  background-color: #ee840af3;
+  
+}
+
 .btn-margin {
   margin: 10px 5px;
 }
