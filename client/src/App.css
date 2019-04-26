@@ -11,9 +11,15 @@ body {
   margin: 7px 3px;
 }
 
-#Jumbotron {
+
+
+.jumbotron {
+
   color: #9bf1fc;
+  background-color: transparent;
+  
 }
+
 
 h4 {
   color: #3b8acf;
