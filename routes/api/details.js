@@ -8,6 +8,7 @@ router
 
 router
 .route("/:id")
+.get(detailsController.findAll)
 .get(detailsController.findOne)
 .delete(detailsController.delete);
 

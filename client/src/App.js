@@ -30,7 +30,7 @@ class App extends Component {
       <div>
         <Navbar fluid>
           <Navbar.Header>
-            <Navbar.Brand class="navbarcss">Lunch Runner</Navbar.Brand>
+            <Navbar.Brand className="navbarcss">Lunch Runner</Navbar.Brand>
             <Button
               bsStyle="info"
               className="btn-margin"
@@ -60,7 +60,7 @@ class App extends Component {
             {isAuthenticated() && (
               <Button
                 id="qsLogoutBtn"
-                bsStyle="secondary"
+                bsStyle="info"
                 className="btn-margin"
                 onClick={this.logout.bind(this)}
               >
@@ -70,20 +70,29 @@ class App extends Component {
           </Navbar.Header>
         </Navbar>
         {!isAuthenticated() && (
+
           <Jumbotron>
             
-            <h1>Lunch Runner</h1>
+            <h1><em>Lunch Runner</em></h1>
+
+          <Jumbotron className="text-center">
+            <h1><em>Lunch Runner</em></h1>
+
             <p>Sign up for a free account to start or join an order.</p>
             <p>
-              <Button variant="secondary">Learn more</Button>
-            </p>{this.props.children}
-            <div>{this.props.children}</div>
+              <Button bsStyle="info" variant="secondary">Learn More</Button>
+            </p>
+
           </Jumbotron>
         )}
 
         {isAuthenticated() && (
+
           <Jumbotron>
-            <h1>Lunch Runner</h1>
+            <h1><em>Lunch Runner</em></h1>
+
+        
+
             <p id="loggedIn">
               Welcome to Lunch Runner! Please click either the 'Create Order'
               button to create a new order or 'Join Order' to join an already

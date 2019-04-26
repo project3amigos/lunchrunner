@@ -8,6 +8,9 @@ module.exports = {
   },
   findAll: function(req, res) {
     db.Details.findAll({
+      where: {
+        orderId: req.params.id
+      },
       include: [db.Order]
     })
       .then(order => res.status(200).send(order))

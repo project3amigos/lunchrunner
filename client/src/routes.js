@@ -4,6 +4,7 @@ import App from './App';
 import Home from './Home/Home';
 import Create from './Create/Create';
 import Join from './Join/Join';
+import JoinDetails from './JoinDetails/JoinDetails';
 import Profile from './Profile/Profile';
 import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
@@ -27,6 +28,7 @@ export const makeMainRoutes = () => {
           </div>
           <Route path="/create" render={(props) => <Create auth={auth} {...props} />} />
           <Route path="/join" render={(props) => <Join auth={auth} {...props} />} />
+          <Route path="/joindetails" render={(props) => <JoinDetails auth={auth} {...props} />} />
           <Route path="/profile" render={(props) => (
             !auth.isAuthenticated() ? (
               <Redirect to="/home"/>

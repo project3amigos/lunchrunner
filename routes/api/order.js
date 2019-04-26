@@ -11,6 +11,10 @@ router
 .get(ordersController.findOne)
 .delete(ordersController.delete);
 
+router
+.route("/open")
+.get(ordersController.findOpen);
+
 module.exports = router;
 
 //bundled in api/index
