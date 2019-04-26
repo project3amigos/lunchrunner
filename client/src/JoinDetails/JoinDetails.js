@@ -63,7 +63,7 @@ class JoinDetails extends Component {
   }
 
   createEntryClick = event => {
-    alert('Order Succesfully Submitted');
+    alert('Your order has been added!');
     const value = this.state;
     event.preventDefault();
     API.createDetails({
@@ -136,6 +136,11 @@ class JoinDetails extends Component {
             </FormGroup>
             <Button size="lg" block onClick={this.createEntryClick}>
               Add to Order
+            </Button>
+            <br/>
+            <br/>
+            <Button size="lg" block>
+              Submit Order
             </Button>
           </div>
         )}
