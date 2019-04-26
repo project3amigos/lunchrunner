@@ -1,6 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   var Order = sequelize.define("Order", {
     // Giving the Order model a name of type STRING
+    id: {
+      type:DataTypes.STRING,
+      primaryKey: true
+    },
     name: DataTypes.STRING,
     userId: DataTypes.STRING,
     restaurant: DataTypes.STRING,
