@@ -75,8 +75,7 @@ class App extends Component {
             
             <h1><em>Lunch Runner</em></h1>
 
-          <Jumbotron className="text-center">
-            <h1><em>Lunch Runner</em></h1>
+          
 
             <p>Sign up for a free account to start or join an order.</p>
             <p>
