@@ -81,12 +81,6 @@ class Final extends Component {
                 ))}
               </tbody>
             </Table>
-
-            <br />
-            <br />
-            <Button size="lg" block onClick={this.submitOrder}>
-              Submit Order
-            </Button>
           </div>
         )}
       </div>
