@@ -150,7 +150,7 @@ class Create extends Component {
                   <em>Person that will be picking up the order.</em>
                 </HelpBlock>
 
-                <ControlLabel>Runner phone number</ControlLabel>
+                <ControlLabel> - Runner phone number</ControlLabel>
                 <FormControl
                   type="text"
                   value={this.state.phoneValue}
@@ -166,7 +166,7 @@ class Create extends Component {
             </form>
             <Button
               size="lg"
-              bsStyle="primary"
+              bsStyle="info"
               block
               onClick={this.createOrderClick}>
               Create Order
