@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import API from '../utils/API';
-import {
-  FormGroup,
-  ControlLabel,
-  FormControl,
-  HelpBlock,
-  Button,
-  Table
-} from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, HelpBlock, Button, Table } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 class JoinDetails extends Component {
@@ -25,7 +19,8 @@ class JoinDetails extends Component {
       userOrderValue: '',
       OrderId: '',
       headOrder: {},
-      orderDetails: []
+      orderDetails: [],
+      submitted: false
     };
   }
 
@@ -42,7 +37,6 @@ class JoinDetails extends Component {
       this.setState({
         headOrder: res.data
       });
-      console.log(res.data);
       console.log(this.state.headOrder);
     });
   }
@@ -57,6 +51,7 @@ class JoinDetails extends Component {
       console.log(this.state.orderDetails);
     });
   };
+
   componentDidMount() {
     this.getOrder();
     this.getOrderDetails();
@@ -79,7 +74,30 @@ class JoinDetails extends Component {
     });
   };
 
+  submitOrder = event => {
+    const id = this.state.selectedOrderId;
+    event.preventDefault();
+    API.updateOrderStatus(id)
+      .then(console.log('submitted'))
+      .catch(err => {
+        console.log(err);
+      });
+    this.setState({
+      submitted: true
+    })
+  };
+
   render() {
+    if (this.state.submitted) {
+      return (
+        <Redirect
+          to={{
+            pathname: '/final',
+            state: { selectedOrderId: this.state.selectedOrderId }
+          }}
+        />
+      );
+    }
     const { isAuthenticated } = this.props.auth;
     return (
       <div className="container">
@@ -121,6 +139,7 @@ class JoinDetails extends Component {
                 <em>This is how you will be identified on the order.</em>
               </HelpBlock>
 
+
               <ControlLabel> - What do you want?</ControlLabel>
               <FormControl
                 type="text"
@@ -133,14 +152,14 @@ class JoinDetails extends Component {
               <HelpBlock>
                 <em>Make sure to be specific, ain't nobody got time for that.</em>
               </HelpBlock>
+
             </FormGroup>
             <Button size="lg" block onClick={this.createEntryClick} bsStyle="primary">
               Add to Order
             </Button>
-            <br/>
-            <br/>
-            <Button size="lg" block
-            bsStyle="success">
+            <br />
+            <br />
+            <Button size="lg" bsStyle="success" block onClick={this.submitOrder}>
               Submit Order
             </Button>
             <hr></hr>

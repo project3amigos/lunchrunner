@@ -7,6 +7,7 @@ import Join from './Join/Join';
 import JoinDetails from './JoinDetails/JoinDetails';
 import Profile from './Profile/Profile';
 import Callback from './Callback/Callback';
+import Final from './Final/Final'
 import Auth from './Auth/Auth';
 import history from './history';
 
@@ -29,6 +30,7 @@ export const makeMainRoutes = () => {
           <Route path="/create" render={(props) => <Create auth={auth} {...props} />} />
           <Route path="/join" render={(props) => <Join auth={auth} {...props} />} />
           <Route path="/joindetails" render={(props) => <JoinDetails auth={auth} {...props} />} />
+          <Route path="/final" render={(props) => <Final auth={auth} {...props} />} />
           <Route path="/profile" render={(props) => (
             !auth.isAuthenticated() ? (
               <Redirect to="/home"/>

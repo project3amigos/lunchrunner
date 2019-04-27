@@ -28,11 +28,12 @@ class Join extends Component {
   }
 
   getAllOrders() {
-    API.getAllOrders().then(res =>
+    API.getAllOrders().then(res => {
+      console.log(res.data);
       this.setState({
         orderNames: res.data
-      })
-    );
+      });
+    });
   }
 
   passOrder = event => {
@@ -70,9 +71,7 @@ class Join extends Component {
         {isAuthenticated() && (
           <div>
             <form>
-              <select
-                onChange={this.handleChange}
-                value={this.state.selectedOrderId}>
+              <select onChange={this.handleChange} value={this.state.selectedOrderId}>
                 <option>Please choose an order to join</option>
                 {this.state.orderNames.map(order => (
                   <option key={order.id} value={order.id}>
@@ -82,9 +81,10 @@ class Join extends Component {
               </select>
               <hr></hr>
               <Button size="lg" bsStyle="primary" block onClick={this.passOrder}>
+
                 Join Order
               </Button>
-              <hr></hr>
+              <hr />
             </form>
           </div>
         )}
