@@ -108,7 +108,7 @@ class JoinDetails extends Component {
               controlId="formBasicText"
               /* validationState={this.getValidationState()} */
             >
-              <ControlLabel>Name</ControlLabel>
+              <ControlLabel> - Name</ControlLabel>
               <FormControl
                 type="text"
                 value={this.state.userValue}
@@ -118,10 +118,10 @@ class JoinDetails extends Component {
               />
               <FormControl.Feedback />
               <HelpBlock>
-                This is how you will be identified on the order.
+                <em>This is how you will be identified on the order.</em>
               </HelpBlock>
 
-              <ControlLabel>What do you want?</ControlLabel>
+              <ControlLabel> - What do you want?</ControlLabel>
               <FormControl
                 type="text"
                 value={this.state.userOrderValue}
@@ -131,17 +131,19 @@ class JoinDetails extends Component {
               />
               <FormControl.Feedback />
               <HelpBlock>
-                Make sure to be specific, ain't nobody got time for that.
+                <em>Make sure to be specific, ain't nobody got time for that.</em>
               </HelpBlock>
             </FormGroup>
-            <Button size="lg" block onClick={this.createEntryClick}>
+            <Button size="lg" block onClick={this.createEntryClick} bsStyle="primary">
               Add to Order
             </Button>
             <br/>
             <br/>
-            <Button size="lg" block>
+            <Button size="lg" block
+            bsStyle="success">
               Submit Order
             </Button>
+            <hr></hr>
           </div>
         )}
       </div>
