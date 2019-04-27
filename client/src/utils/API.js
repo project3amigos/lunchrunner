@@ -17,6 +17,9 @@ export default {
   createDetails: function(detailsData) {
     return axios.post('/api/details', detailsData);
   },
+  updateOrderStatus: function(id) {
+    return axios.put('/api/orders/' + id);
+  },
   getDetails: function(id) {
     return axios.get('/api/details/' + id);
   }
