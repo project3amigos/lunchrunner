@@ -33,6 +33,7 @@ class JoinDetails extends Component {
 
   getOrder() {
     const id = this.state.selectedOrderId;
+    console.log(id);
     API.getOrder(id).then(res => {
       this.setState({
         headOrder: res.data
@@ -58,7 +59,7 @@ class JoinDetails extends Component {
   }
 
   createEntryClick = event => {
-    const id = this.state.selectedOrderId;
+    // const id = this.state.selectedOrderId;
     alert('Your order has been added!');
     const value = this.state;
     event.preventDefault();
