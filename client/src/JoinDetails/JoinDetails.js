@@ -62,14 +62,17 @@ class JoinDetails extends Component {
     // const id = this.state.selectedOrderId;
     alert('Your order has been added!');
     const value = this.state;
-    event.preventDefault();
-    API.createDetails({
+    const newOrder = {
       user: value.userValue,
       userOrder: value.userOrderValue,
       OrderId: this.state.headOrder.id
-    })
+    }
+    event.preventDefault();
+    API.createDetails(newOrder)
       .then(
-        this.getOrderDetails()
+        this.setState(prevState=>({
+          orderDetails: [newOrder, ...prevState.orderDetails]
+        }))
       )
       .catch(err => {
         console.log(err);
