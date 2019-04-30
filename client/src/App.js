@@ -33,7 +33,7 @@ class App extends Component {
         <Navbar className="navbarcss" fluid>
           <Navbar.Header>
             <a href="/" class="navbar-brand">
-              <img src='https://www.fontspace.com/api/renderfont4/4nx9/eyJyIjoiZ2RpIiwiaCI6MzUsInciOjEwMDAsImZzIjozNSwiZmdjIjoiIzM3M2VlNiJ9/bHVuY2ggcnVubmVy/blade-runner-movie-font.png'/>
+              <img src='https://www.fontspace.com/api/renderfont4/4nx9/eyJyIjoiZ2RpIiwiaCI6MzUsInciOjEwMDAsImZzIjozNSwiZmdjIjoiIzM3M2VlNiJ9/bHVuY2ggcnVubmVy/blade-runner-movie-font.png' alt=""/>
             </a>
               {/* <Navbar.Brand>Lunch Runner</Navbar.Brand> */}
               <Button

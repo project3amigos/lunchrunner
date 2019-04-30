@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
-import {
-  FormGroup,
-  ControlLabel,
-  FormControl,
-  HelpBlock,
-  Button
-} from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, HelpBlock, Button } from 'react-bootstrap';
 import API from '../utils/API';
 import uniqid from 'uniqid';
 import { Redirect } from 'react-router-dom';
-
 
 // import { Link } from 'react-router-dom';
 
@@ -66,9 +59,6 @@ class Create extends Component {
       dateValue: '',
       completed: true
     });
-    API.getOrder(this.state.id);
-    // completed: true,
-    // newOrderId: ''
   };
 
   render() {
@@ -94,10 +84,7 @@ class Create extends Component {
                 controlId="formBasicText"
                 /* validationState={this.getValidationState()} */
               >
-                <ControlLabel>
-                  {' '}
-                  - Enter the Name of the Order Below
-                </ControlLabel>
+                <ControlLabel> - Enter the Name of the Order Below</ControlLabel>
                 <FormControl
                   type="text"
                   value={this.state.orderValue}
@@ -107,10 +94,7 @@ class Create extends Component {
                 />
                 <FormControl.Feedback />
                 <HelpBlock>
-                  <em>
-                    This should be something that everyone on the order will
-                    recognize.
-                  </em>
+                  <em>This should be something that everyone on the order will recognize.</em>
                 </HelpBlock>
 
                 <ControlLabel> - Restaurant Name</ControlLabel>
@@ -166,11 +150,7 @@ class Create extends Component {
                 </HelpBlock>
               </FormGroup>
             </form>
-            <Button
-              size="lg"
-              bsStyle="info"
-              block
-              onClick={this.createOrderClick}>
+            <Button size="lg" bsStyle="info" block onClick={this.createOrderClick}>
               Create Order
             </Button>
             <hr />

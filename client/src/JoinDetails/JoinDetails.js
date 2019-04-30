@@ -68,12 +68,7 @@ class JoinDetails extends Component {
       OrderId: this.state.headOrder.id
     })
       .then(
-        API.getDetails(id).then(res => {
-          this.setState({
-            orderDetails: res.data
-          });
-          console.log(this.state.orderDetails);
-        })
+        this.getOrderDetails()
       )
       .catch(err => {
         console.log(err);
