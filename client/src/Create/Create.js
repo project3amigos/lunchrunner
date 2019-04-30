@@ -42,11 +42,12 @@ class Create extends Component {
   };
 
   createOrderClick = event => {
+    let id = uniqid();
     alert('Order Succesfully Created');
     const value = this.state;
     event.preventDefault();
     API.createOrder({
-      id: uniqid(),
+      id: id,
       name: value.orderValue,
       userId: 'me',
       restaurant: value.restaurantValue,
@@ -57,6 +58,7 @@ class Create extends Component {
       console.log(err);
     });
     this.setState({
+      id: id,
       orderValue: '',
       restaurantValue: '',
       runnerValue: '',

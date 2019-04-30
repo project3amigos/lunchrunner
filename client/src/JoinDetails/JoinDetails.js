@@ -58,6 +58,7 @@ class JoinDetails extends Component {
   }
 
   createEntryClick = event => {
+    const id = this.state.selectedOrderId;
     alert('Your order has been added!');
     const value = this.state;
     event.preventDefault();
@@ -65,9 +66,18 @@ class JoinDetails extends Component {
       user: value.userValue,
       userOrder: value.userOrderValue,
       OrderId: this.state.headOrder.id
-    }).catch(err => {
-      console.log(err);
-    });
+    })
+      .then(
+        API.getDetails(id).then(res => {
+          this.setState({
+            orderDetails: res.data
+          });
+          console.log(this.state.orderDetails);
+        })
+      )
+      .catch(err => {
+        console.log(err);
+      });
     this.setState({
       userValue: '',
       userOrderValue: ''
@@ -84,7 +94,7 @@ class JoinDetails extends Component {
       });
     this.setState({
       submitted: true
-    })
+    });
   };
 
   render() {
@@ -139,7 +149,6 @@ class JoinDetails extends Component {
                 <em>This is how you will be identified on the order.</em>
               </HelpBlock>
 
-
               <ControlLabel> - What do you want?</ControlLabel>
               <FormControl
                 type="text"
@@ -152,7 +161,6 @@ class JoinDetails extends Component {
               <HelpBlock>
                 <em>Make sure to be specific, ain't nobody got time for that.</em>
               </HelpBlock>
-
             </FormGroup>
             <Button size="lg" block onClick={this.createEntryClick} bsStyle="primary">
               Add to Order
@@ -162,7 +170,7 @@ class JoinDetails extends Component {
             <Button size="lg" bsStyle="success" block onClick={this.submitOrder}>
               Submit Order
             </Button>
-            <hr></hr>
+            <hr />
           </div>
         )}
       </div>
