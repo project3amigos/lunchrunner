@@ -18,9 +18,10 @@ class JoinDetails extends Component {
       userValue: '',
       userOrderValue: '',
       OrderId: '',
-      headOrder: {},
+      headOrder: this.props.location.state.headOrder || {},
       orderDetails: [],
-      submitted: false
+      submitted: false,
+      render: this.props.location.state.render
     };
   }
 
@@ -32,13 +33,16 @@ class JoinDetails extends Component {
   };
 
   getOrder() {
-    const id = this.state.selectedOrderId;
-    API.getOrder(id).then(res => {
-      this.setState({
-        headOrder: res.data
+    if (this.state.render) {
+      const id = this.state.selectedOrderId;
+      console.log(id);
+      API.getOrder(id).then(res => {
+        this.setState({
+          headOrder: res.data
+        });
+        console.log(this.state.headOrder);
       });
-      console.log(this.state.headOrder);
-    });
+    }
   }
 
   getOrderDetails = () => {
@@ -58,16 +62,22 @@ class JoinDetails extends Component {
   }
 
   createEntryClick = event => {
-    alert('Your order has been added!');
     const value = this.state;
-    event.preventDefault();
-    API.createDetails({
+    const newOrder = {
       user: value.userValue,
       userOrder: value.userOrderValue,
       OrderId: this.state.headOrder.id
-    }).catch(err => {
-      console.log(err);
-    });
+    };
+    event.preventDefault();
+    API.createDetails(newOrder)
+      .then(
+        this.setState(prevState => ({
+          orderDetails: [newOrder, ...prevState.orderDetails]
+        }))
+      )
+      .catch(err => {
+        console.log(err);
+      });
     this.setState({
       userValue: '',
       userOrderValue: ''
@@ -84,7 +94,7 @@ class JoinDetails extends Component {
       });
     this.setState({
       submitted: true
-    })
+    });
   };
 
   render() {
@@ -124,7 +134,6 @@ class JoinDetails extends Component {
 
             <FormGroup
               controlId="formBasicText"
-              /* validationState={this.getValidationState()} */
             >
               <ControlLabel> - Name</ControlLabel>
               <FormControl
@@ -139,7 +148,6 @@ class JoinDetails extends Component {
                 <em>This is how you will be identified on the order.</em>
               </HelpBlock>
 
-
               <ControlLabel> - What do you want?</ControlLabel>
               <FormControl
                 type="text"
@@ -152,7 +160,6 @@ class JoinDetails extends Component {
               <HelpBlock>
                 <em>Make sure to be specific, ain't nobody got time for that.</em>
               </HelpBlock>
-
             </FormGroup>
             <Button size="lg" block onClick={this.createEntryClick} bsStyle="primary">
               Add to Order
@@ -162,7 +169,7 @@ class JoinDetails extends Component {
             <Button size="lg" bsStyle="success" block onClick={this.submitOrder}>
               Submit Order
             </Button>
-            <hr></hr>
+            <hr />
           </div>
         )}
       </div>

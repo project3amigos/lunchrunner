@@ -25,6 +25,7 @@ class Join extends Component {
 
   handleChange(event) {
     this.setState({ selectedOrderId: event.target.value });
+    console.log(this.state.selectedOrderId);
   }
 
   getAllOrders() {
@@ -46,21 +47,16 @@ class Join extends Component {
     this.getAllOrders();
   }
 
-  // getValidationState() {
-  //   const length = this.state.value.length;
-  //   if (length > 10) return 'success';
-  //   else if (length > 5) return 'warning';
-  //   else if (length > 0) return 'error';
-  //   return null;
-  // };
-
   render() {
     if (this.state.completed) {
       return (
         <Redirect
           to={{
             pathname: '/joindetails',
-            state: { selectedOrderId: this.state.selectedOrderId }
+            state: {
+              selectedOrderId: this.state.selectedOrderId,
+              render: true
+            }
           }}
         />
       );
@@ -79,9 +75,8 @@ class Join extends Component {
                   </option>
                 ))}
               </select>
-              <hr></hr>
+              <hr />
               <Button size="lg" bsStyle="primary" block onClick={this.passOrder}>
-
                 Join Order
               </Button>
               <hr />

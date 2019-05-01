@@ -23,7 +23,7 @@ export const makeMainRoutes = () => {
   return (
     <Router history={history}>
         <div>
-          <div classname="text-center">
+          <div className="text-center">
           <Route path="/" render={(props) => <App auth={auth} {...props} />} />
           <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
           </div>

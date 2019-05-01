@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
-import {
-  FormGroup,
-  ControlLabel,
-  FormControl,
-  HelpBlock,
-  Button
-} from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, HelpBlock, Button } from 'react-bootstrap';
 import API from '../utils/API';
 import uniqid from 'uniqid';
 import { Redirect } from 'react-router-dom';
-
-
-// import { Link } from 'react-router-dom';
 
 class Create extends Component {
   login() {
@@ -42,11 +33,14 @@ class Create extends Component {
   };
 
   createOrderClick = event => {
-    alert('Order Succesfully Created');
+    let id = uniqid();
     const value = this.state;
     event.preventDefault();
+    this.setState({
+      id: id
+    });
     API.createOrder({
-      id: uniqid(),
+      id: id,
       name: value.orderValue,
       userId: 'me',
       restaurant: value.restaurantValue,
@@ -57,16 +51,8 @@ class Create extends Component {
       console.log(err);
     });
     this.setState({
-      orderValue: '',
-      restaurantValue: '',
-      runnerValue: '',
-      phoneValue: '',
-      dateValue: '',
       completed: true
     });
-    API.getOrder(this.state.id);
-    // completed: true,
-    // newOrderId: ''
   };
 
   render() {
@@ -75,7 +61,11 @@ class Create extends Component {
         <Redirect
           to={{
             pathname: '/joindetails',
-            state: { selectedOrderId: this.state.id }
+            state: {
+              selectedOrderId: this.state.id,
+              headOrder: {id: this.state.id, name: this.state.orderValue, restaurant: this.state.restaurantValue },
+              render: false
+            }
           }}
         />
       );
@@ -90,12 +80,8 @@ class Create extends Component {
             <form>
               <FormGroup
                 controlId="formBasicText"
-                /* validationState={this.getValidationState()} */
               >
-                <ControlLabel>
-                  {' '}
-                  - Enter the Name of the Order Below
-                </ControlLabel>
+                <ControlLabel> - Enter the Name of the Order Below</ControlLabel>
                 <FormControl
                   type="text"
                   value={this.state.orderValue}
@@ -105,10 +91,7 @@ class Create extends Component {
                 />
                 <FormControl.Feedback />
                 <HelpBlock>
-                  <em>
-                    This should be something that everyone on the order will
-                    recognize.
-                  </em>
+                  <em>This should be something that everyone on the order will recognize.</em>
                 </HelpBlock>
 
                 <ControlLabel> - Restaurant Name</ControlLabel>
@@ -164,11 +147,7 @@ class Create extends Component {
                 </HelpBlock>
               </FormGroup>
             </form>
-            <Button
-              size="lg"
-              bsStyle="info"
-              block
-              onClick={this.createOrderClick}>
+            <Button size="lg" bsStyle="info" block onClick={this.createOrderClick}>
               Create Order
             </Button>
             <hr />

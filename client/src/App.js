@@ -32,8 +32,8 @@ class App extends Component {
       <div>
         <Navbar className="navbarcss" fluid>
           <Navbar.Header>
-            <a href="/" class="navbar-brand">
-              <img src='https://www.fontspace.com/api/renderfont4/4nx9/eyJyIjoiZ2RpIiwiaCI6MzUsInciOjEwMDAsImZzIjozNSwiZmdjIjoiIzM3M2VlNiJ9/bHVuY2ggcnVubmVy/blade-runner-movie-font.png'/>
+            <a href="/" className="navbar-brand">
+              <img src='https://www.fontspace.com/api/renderfont4/4nx9/eyJyIjoiZ2RpIiwiaCI6MzUsInciOjEwMDAsImZzIjozNSwiZmdjIjoiIzM3M2VlNiJ9/bHVuY2ggcnVubmVy/blade-runner-movie-font.png' alt=""/>
             </a>
               {/* <Navbar.Brand>Lunch Runner</Navbar.Brand> */}
               <Button
@@ -66,8 +66,7 @@ class App extends Component {
                 <Button
                   id="qsLogoutBtn"
                   // bsStyle="secondary"
-                  btn-outline="secondary"
-                  className="btn-margin"
+                  className="btn-margin secondary"
                   onClick={this.logout.bind(this)}
                 >
                   Log Out
@@ -85,7 +84,7 @@ class App extends Component {
 
               <p>Sign up for a free account to start or join an order.</p>
               <p>
-                <Button bsStyle="info" variant="secondary">Learn More</Button>
+                <Button bsStyle="info" className="secondary">Learn More</Button>
               </p>
 
             </Jumbotron>
