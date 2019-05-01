@@ -18,9 +18,10 @@ class JoinDetails extends Component {
       userValue: '',
       userOrderValue: '',
       OrderId: '',
-      headOrder: {},
+      headOrder: this.props.location.state.headOrder || {},
       orderDetails: [],
-      submitted: false
+      submitted: false,
+      render: this.props.location.state.render
     };
   }
 
@@ -32,14 +33,16 @@ class JoinDetails extends Component {
   };
 
   getOrder() {
-    const id = this.state.selectedOrderId;
-    console.log(id);
-    API.getOrder(id).then(res => {
-      this.setState({
-        headOrder: res.data
+    if (this.state.render) {
+      const id = this.state.selectedOrderId;
+      console.log(id);
+      API.getOrder(id).then(res => {
+        this.setState({
+          headOrder: res.data
+        });
+        console.log(this.state.headOrder);
       });
-      console.log(this.state.headOrder);
-    });
+    }
   }
 
   getOrderDetails = () => {
@@ -59,18 +62,16 @@ class JoinDetails extends Component {
   }
 
   createEntryClick = event => {
-    // const id = this.state.selectedOrderId;
-    alert('Your order has been added!');
     const value = this.state;
     const newOrder = {
       user: value.userValue,
       userOrder: value.userOrderValue,
       OrderId: this.state.headOrder.id
-    }
+    };
     event.preventDefault();
     API.createDetails(newOrder)
       .then(
-        this.setState(prevState=>({
+        this.setState(prevState => ({
           orderDetails: [newOrder, ...prevState.orderDetails]
         }))
       )
@@ -133,7 +134,6 @@ class JoinDetails extends Component {
 
             <FormGroup
               controlId="formBasicText"
-              /* validationState={this.getValidationState()} */
             >
               <ControlLabel> - Name</ControlLabel>
               <FormControl

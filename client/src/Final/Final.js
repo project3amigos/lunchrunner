@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import API from '../utils/API';
 import { Table } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
 
 class Final extends Component {
   login() {

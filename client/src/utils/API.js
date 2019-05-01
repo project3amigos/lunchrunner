@@ -12,7 +12,7 @@ export default {
     return axios.get('/api/orders/open');
   },
   getOrder: function(id) {
-    return axios.get('/api/orders/' + id);
+    return axios.get('/api/orders/' + id).then(console.log("order obtained"));
   },
   createDetails: function(detailsData) {
     return axios.post('/api/details', detailsData);
@@ -21,6 +21,6 @@ export default {
     return axios.put('/api/orders/' + id);
   },
   getDetails: function(id) {
-    return axios.get('/api/details/' + id);
+    return axios.get('/api/details/' + id).then(console.log("details obtained"));
   }
 };

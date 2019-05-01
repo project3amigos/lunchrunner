@@ -4,8 +4,6 @@ import API from '../utils/API';
 import uniqid from 'uniqid';
 import { Redirect } from 'react-router-dom';
 
-// import { Link } from 'react-router-dom';
-
 class Create extends Component {
   login() {
     this.props.auth.login();
@@ -36,9 +34,11 @@ class Create extends Component {
 
   createOrderClick = event => {
     let id = uniqid();
-    alert('Order Succesfully Created');
     const value = this.state;
     event.preventDefault();
+    this.setState({
+      id: id
+    });
     API.createOrder({
       id: id,
       name: value.orderValue,
@@ -51,12 +51,6 @@ class Create extends Component {
       console.log(err);
     });
     this.setState({
-      id: id,
-      orderValue: '',
-      restaurantValue: '',
-      runnerValue: '',
-      phoneValue: '',
-      dateValue: '',
       completed: true
     });
   };
@@ -67,7 +61,11 @@ class Create extends Component {
         <Redirect
           to={{
             pathname: '/joindetails',
-            state: { selectedOrderId: this.state.id }
+            state: {
+              selectedOrderId: this.state.id,
+              headOrder: {id: this.state.id, name: this.state.orderValue, restaurant: this.state.restaurantValue },
+              render: false
+            }
           }}
         />
       );
@@ -82,7 +80,6 @@ class Create extends Component {
             <form>
               <FormGroup
                 controlId="formBasicText"
-                /* validationState={this.getValidationState()} */
               >
                 <ControlLabel> - Enter the Name of the Order Below</ControlLabel>
                 <FormControl
