@@ -87,8 +87,22 @@ class JoinDetails extends Component {
   submitOrder = event => {
     const id = this.state.selectedOrderId;
     event.preventDefault();
-    API.updateOrderStatus(id)
-      .then(console.log('submitted'))
+    const number = this.state.headOrder.runnerPhone;
+    console.log(number);
+    // const text = ;
+    API.updateOrderStatus(id).catch(err => {
+      console.log(err);
+    });
+    fetch('/text', {
+      method: 'post',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({ number: 14358816027, text: 'Your order was submitted! ' })
+    })
+      .then(function(res) {
+        console.log(res);
+      })
       .catch(err => {
         console.log(err);
       });
@@ -132,9 +146,7 @@ class JoinDetails extends Component {
               </tbody>
             </Table>
 
-            <FormGroup
-              controlId="formBasicText"
-            >
+            <FormGroup controlId="formBasicText">
               <ControlLabel> - Name</ControlLabel>
               <FormControl
                 type="text"

@@ -63,7 +63,12 @@ class Create extends Component {
             pathname: '/joindetails',
             state: {
               selectedOrderId: this.state.id,
-              headOrder: {id: this.state.id, name: this.state.orderValue, restaurant: this.state.restaurantValue },
+              headOrder: {
+                id: this.state.id,
+                name: this.state.orderValue,
+                restaurant: this.state.restaurantValue,
+                runnerPhone: this.state.phoneValue
+              },
               render: false
             }
           }}
@@ -78,9 +83,7 @@ class Create extends Component {
             <h4>Start filling out your form below to begin</h4>
             <hr />
             <form>
-              <FormGroup
-                controlId="formBasicText"
-              >
+              <FormGroup controlId="formBasicText">
                 <ControlLabel> - Enter the Name of the Order Below</ControlLabel>
                 <FormControl
                   type="text"
