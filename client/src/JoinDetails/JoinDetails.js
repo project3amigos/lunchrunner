@@ -98,7 +98,7 @@ class JoinDetails extends Component {
       headers: {
         'Content-type': 'application/json'
       },
-      body: JSON.stringify({ number: 14358816027, text: 'Your order was submitted! ' })
+      body: JSON.stringify({ number: number, text: 'Your order was submitted! ' })
     })
       .then(function(res) {
         console.log(res);
